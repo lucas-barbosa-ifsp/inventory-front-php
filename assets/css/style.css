@@ -1,0 +1,10 @@
+.tile{
+    height: 200px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    padding-top: 100px;
+    border: 1px solid green;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
