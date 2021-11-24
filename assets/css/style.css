@@ -3,8 +3,11 @@
     text-align: center;
     font-size: 30px;
     font-weight: bolder;
-    padding-top: 100px;
+    padding-top: 80px;
     border: 1px solid green;
-    margin-bottom: 1px;
+
+    border-color: #fff;
     cursor: pointer;
+    background-color: green;
+    color: #fff
 }
