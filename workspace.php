@@ -10,42 +10,55 @@ $api = new ApiService();
 if (isset($_GET["pesquisa"])) {
     $data = $api->get(config::uri() . "/patrimonies/" . $_GET["pesquisa"]);
 }
+if(isset($_GET["erro"])){
+        $erro = true;
+        $data = $api->get(config::uri() . "/patrimonies/" . $_GET["lastAdd"]);
+}
 
-
-require_once "template/header.php";
+    require_once "template/header.php";
 ?>
     <h2> Incluindo na Sala <?= $_GET["name"] ?></h2>
 
     <div class="input-group mb-3 col-9 ">
-        <input type="text" class="form-control" placeholder="DIGITE O NÚMERO DO PATRIMÔNIO"
+        <input type="text" class="form-control pesquisa-value" placeholder="DIGITE O NÚMERO DO PATRIMÔNIO"
                aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary search" data-id="<?= $_GET["id"] ?>"
-                    data-name="<?= $_GET["name"] ?>" data-pesquisa="<?= $_GET["pesquisa"] ?>" type="button">Pesquisar
+            <button class="btn btn-outline-secondary search"
+                    data-class="<?= $_GET["class"] ?>" data-name="<?= $_GET["name"] ?>" data-pesquisa="<?= $_GET["pesquisa"] ?>" type="button">Pesquisar
             </button>
         </div>
     </div>
 
-<?php if (isset($data) && $data ) { ?>
+<?php if (isset($data) && $data) { ?>
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title"><?= $data->numero?></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
+    <?php if($erro){ ?>
+        <div class="alert alert-danger" role="alert">
+            Houve um erro ao salvar o item <?= $data->numero?>, por favor tente novamente, caso o erro persista procure a CTI
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+    <?php } ?>
+
+
+    <div class="col-12">
+        <div class="card col-12">
+            <div class="card-body">
+                <h5 class="card-title">Numero: <?= $data->numero ?></h5>
+                <p class="card-text"><?= $data->descricao ?></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Rótulo:</b> <?= $data->rotulo?></li>
+                <li class="list-group-item"><b>Setor Responsável:</b> <?= $data->setorResponsavel?></li>
+                <li class="list-group-item"><b>Responsável:</b> <?= $data->cargaAtual?></li>
+            </ul>
+            <div class="card-body">
+                <a href="<?=config::frontUri()?>/Service.php?save=true&class=<?= $_GET['class'] ?>&item=<?= $data->numero?>&className=<?= $_GET['name']?>" class="btn btn-primary">Incluir na sala <?= $_GET['name']?></a>
+            </div>
         </div>
+
     </div>
-
-
+<?php } else if($_GET['lastAdd']){ ?>
+    <div class="alert alert-success" role="alert">
+        O item, <?= $_GET['lastAdd']?> foi inserido com sucesso
+    </div>
 <?php } ?>
 
 <?php

@@ -8,11 +8,10 @@ $(document).ready(function (e){
     })
 
     $(".search").click(function (){
-        alert("oi")
         window.location.replace('http://localhost:3000/workspace.php?' +
-            'class='+ $(this).attr("data-id") +
+            'class='+ $(this).attr("data-class") +
             "&name=" + $(this).attr("data-name") +
-            "&pesquisa=" + $(this).attr("pesquisa")
+            "&pesquisa=" + $(".pesquisa-value").val()
         )
     })
 

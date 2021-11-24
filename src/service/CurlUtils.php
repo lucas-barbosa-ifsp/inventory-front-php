@@ -29,7 +29,10 @@ class CurlUtils
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 // EXECUTE:
         $result = curl_exec($curl);
-        if(!$result){die("Connection Failure");}
+        if(!$result){
+            curl_close($curl);
+            return "erro";
+        }
         curl_close($curl);
         return $result;
     }
