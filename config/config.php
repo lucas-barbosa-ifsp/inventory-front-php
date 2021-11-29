@@ -4,9 +4,9 @@ class config
 {
 
     public static function uri(){
-        return "http://localhost:8080";
+        return "https://200.133.222.32:8080";
     }
     public static function frontUri(){
-        return "http://localhost:3000";
+        return "http://200.133.222.32/inventory-front-php";
     }
 }
