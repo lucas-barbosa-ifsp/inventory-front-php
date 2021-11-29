@@ -10,6 +10,7 @@
 
     $(document).ready(function (e){
 
+
         $(".tile-bloco").click(function (){
             window.location.replace('http://localhost:3000/classes.php?bloco='+ $(this).attr("data-id"))
         })
