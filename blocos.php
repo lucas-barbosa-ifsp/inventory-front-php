@@ -15,7 +15,7 @@ $blocos = $api->get(config::uri() . "/blocos");
 require_once "template/header.php";
 ?>
 
-
+blocos
 
     <div class="row">
 
