@@ -20,4 +20,19 @@ class ApiService
     }
 
 
+    public function post($url, $data)
+    {
+        try{
+            $curl = new CurlUtils();
+            $data = $curl->callAPI("POST", $url, $data);
+
+        }catch (Exception $ex){
+            print_r("Falha ao buscar");
+
+        }
+        return json_decode($data);
+
+    }
+
+
 }

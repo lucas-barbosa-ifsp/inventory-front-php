@@ -1,5 +1,7 @@
 <?php
 
+require_once 'session.php';
+
 if (isset($_GET["bloco"])) {
     header('Location: classes.php?bloco='.$_GET["bloco"]);
 }
