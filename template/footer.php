@@ -12,14 +12,14 @@
 
 
         $(".tile-bloco").click(function (){
-            window.location.replace('http://200.133.222.32/inventory-front-php/classes.php?bloco='+ $(this).attr("data-id"))
+            window.location.replace('/classes.php?bloco='+ $(this).attr("data-id"))
         })
         $(".tile-class").click(function (){
-            window.location.replace('http://200.133.222.32/inventory-front-php/workspace.php?class='+ $(this).attr("data-id") + "&name=" + $(this).attr("data-name") )
+            window.location.replace('/workspace.php?class='+ $(this).attr("data-id") + "&name=" + $(this).attr("data-name") )
         })
 
         $(".search").click(function (){
-            window.location.replace('http://200.133.222.32/inventory-front-php/workspace.php?' +
+            window.location.replace('/inventory-front-php/workspace.php?' +
                 'class='+ $(this).attr("data-class") +
                 "&name=" + $(this).attr("data-name") +
                 "&pesquisa=" + $(".pesquisa-value").val()
