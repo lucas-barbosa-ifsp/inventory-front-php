@@ -9,7 +9,7 @@ $(document).ready(function (e){
     })
 
     $(".search").click(function (){
-        window.location.replace('/inventory-front-php/workspace.php?' +
+        window.location.replace('/workspace.php?' +
             'class='+ $(this).attr("data-class") +
             "&name=" + $(this).attr("data-name") +
             "&pesquisa=" + $(".pesquisa-value").val()
