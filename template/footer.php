@@ -6,27 +6,6 @@
         src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
-<script>
-
-    $(document).ready(function (e){
-
-
-        $(".tile-bloco").click(function (){
-            window.location.replace('/classes.php?bloco='+ $(this).attr("data-id"))
-        })
-        $(".tile-class").click(function (){
-            window.location.replace('/workspace.php?class='+ $(this).attr("data-id") + "&name=" + $(this).attr("data-name") )
-        })
-
-        $(".search").click(function (){
-            window.location.replace('/inventory-front-php/workspace.php?' +
-                'class='+ $(this).attr("data-class") +
-                "&name=" + $(this).attr("data-name") +
-                "&pesquisa=" + $(".pesquisa-value").val()
-            )
-        })
-
-    })
-</script>
+<script src = "/assets/js/script.js"></script>
 
 </html>
