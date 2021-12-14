@@ -14,7 +14,7 @@ $classes = $api->get(config::uri() . "/classesByBloco/" . $_GET["bloco"]);
 
 require_once "template/header.php";
 ?>
-    <?php var_dump($classes)?>
+
     <div class="row">
 
         <?php foreach ($classes as $class) { ?>
