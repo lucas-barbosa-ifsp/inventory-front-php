@@ -3,6 +3,7 @@
 if (!isset($_GET["class"])) {
     header('Location: blocos.php');
 }
+require_once "config/cookies.php";
 require_once "config/config.php";
 require_once "src/service/ApiService.php";
 
@@ -19,9 +20,10 @@ if (isset($_GET["erro"])) {
 require_once "template/header.php";
 ?>
     <div class="col-10 offset-1">
-        <h1 class = "text-center mb-2"> Incluindo na Sala <?= $_GET["name"] ?></h1>
-
-        <div class="input-group mb-3 col-9 ">
+        <div class="row text-center "><a href="/blocos.php" class="btn btn-success col-3 mb-3">Voltar</a></div>
+        <h1 class="text-center mb-2"> Incluindo na Sala <?= $_GET["name"] ?></h1>
+        <div class = "btn btn-success show-patrimony-form mb-3">Adicionar item sem patrimonio</div>
+        <div class="input-group mb-3 col-9 find-patrimony ">
             <input type="text" class="form-control pesquisa-value input-lg" placeholder="DIGITE O NÚMERO DO PATRIMÔNIO"
                    aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
@@ -31,6 +33,26 @@ require_once "template/header.php";
                 </button>
             </div>
         </div>
+
+        <div class="mb-3 col-12 patrimony-form hidden">
+            <form action="Service.php"
+                  method="get">
+                <span> Digite a descrição mais completa possível</span>
+                <textarea name="descricao" class="form-control add-patrimony-value"
+                          placeholder="DIGITE A DESCRIÇÃO DO PATRIMONIO"
+                          aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </textarea>
+                <input type = "hidden" name = "add-patrimony" value="true">
+                <input type = "hidden" name = "class" value="<?= $_GET["class"] ?>">
+                <input type = "hidden" name = "className" value="<?= $_GET["name"] ?>">
+
+                <button type="submit" class="btn btn-outline-success add-patrimony mt-2">
+                    Adicionar
+                </button>
+
+            </form>
+        </div>
+
     </div>
 <?php if (isset($data) && $data) { ?>
 
@@ -63,6 +85,10 @@ require_once "template/header.php";
 <?php } else if (isset($_GET['lastAdd'])) { ?>
     <div class="alert alert-success" role="alert">
         O item, <?= $_GET['lastAdd'] ?> foi inserido com sucesso
+    </div>
+<?php } else if(isset($_GET['pesquisa'])) { ?>
+    <div class="alert alert-danger" role="alert">
+        Nenhum item foi encontrado com o valor inserido
     </div>
 <?php } ?>
 

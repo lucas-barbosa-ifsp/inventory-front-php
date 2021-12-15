@@ -16,4 +16,20 @@ $(document).ready(function (e){
         )
     })
 
+    $(".show-patrimony-form").click(function(e){
+        $(".patrimony-form").toggleClass("hidden")
+        $(".find-patrimony").toggleClass("hidden")
+        if($(".patrimony-form").hasClass("hidden")){
+            $(this).text("Adicionar item sem patrimônio")
+        }else{
+            $(this).text("Pesquisar item com patrimonio")
+        }
+
+    })
+
+
+
+
+
+
 })
